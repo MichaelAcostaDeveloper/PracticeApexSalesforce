@@ -43,4 +43,3 @@ public class OperatorsExampleOne {
         System.debug('El primer valor es: '+errorAsig+', el segundo valor es: '+numMayor);
       }
     }
-
