@@ -1,4 +1,4 @@
-public with sharing class ManipulacionDeDatos {
+public with sharing class ManipulacionDeDatosPart1 {
     public static void creationObjectsForm1(){
         Account objCuenta = new Account();
         objCuenta.Name = 'Michael';
@@ -38,7 +38,6 @@ public with sharing class ManipulacionDeDatos {
                 listOpp.add(objOpp);
         }
         return listOpp;
-     
     }
 
     public static void usandoMapas(){
