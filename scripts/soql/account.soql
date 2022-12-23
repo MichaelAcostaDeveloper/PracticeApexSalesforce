@@ -5,4 +5,4 @@
 
 //Examples of Queries
 //SELECT Id, Name, CreatedDate FROM Account ORDER BY CreatedDate DESC LIMIT 5
- 
+//SELECT Id, Name, createdDate, Account.Name FROM Opportunity ORDER BY CreatedDate DESC LIMIT 5
