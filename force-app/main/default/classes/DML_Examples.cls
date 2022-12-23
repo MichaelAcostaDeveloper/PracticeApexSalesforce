@@ -25,7 +25,7 @@ public static Account updateAccount(String newName, String newId) {
 
 public static void deleteAccount(String idAccount){
     Account objAccount = [SELECT Id FROM Account WHERE Id =: idAccount];
-    delete Account;
-    
+    delete objAccount;
+
 }
 }
