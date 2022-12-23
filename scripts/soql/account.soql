@@ -3,4 +3,6 @@
 //     query text and running the command:
 //     SFDX: Execute SOQL Query with Currently Selected Text
 
-SELECT Id, Name FROM Account
+//Examples of Queries
+//SELECT Id, Name, CreatedDate FROM Account ORDER BY CreatedDate DESC LIMIT 5
+ 

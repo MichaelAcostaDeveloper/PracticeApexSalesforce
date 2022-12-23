@@ -1,5 +1,5 @@
 public with sharing class DML_Examples {
-//insert account and custom objects
+//insert, update, upsert, delete, undelete  account and custom objects
 public static Id insertAccount(String nombAccount){
     Account objAccount = new Account();
     objAccount.Name = nombAccount;
@@ -40,7 +40,27 @@ public static void upsertObject (String idAccount, String nombAccount){
 
 public static void undeleteObjectExample(String nombreCuentaParaRecuperar){
 nombreCuentaParaRecuperar = '%'+nombreCuentaParaRecuperar+'%';
-Account[] cuentasParaRecuperar = [SELECT Id, Name FROM Account WHERE Name like :nombreCuentaParaRecuperar ALL ROWS];//ALL ROWS SIRVE PARA BUSCAR INCLUSIVE EN LA PAPELERA DE RECICLAJE
+Account[] cuentasParaRecuperar = [SELECT Id, Name FROM Account WHERE Name like :nombreCuentaParaRecuperar ALL ROWS];
+//ALL ROWS SIRVE PARA BUSCAR INCLUSIVE EN LA PAPELERA DE RECICLAJE
 undelete cuentasParaRecuperar;
 }
+
+public static void testMethodDML(){
+//INSERT
+Id IdCuentaInsertada = insertAccount('Cuenta creada por insercion en codigo');
+System.debug('INSERT- ID DE CUENTA INSERTADA: '+IdCuentaInsertada);
+Opportunity objOpp = new Opportunity(
+    Name ='Micke crea oportunidad',
+    Description = 'Test de oportunidad',
+    AccountId = IdCuentaInsertada,
+    StageName = 'Prospecting',
+    CloseDate =System.today()+1
+);
+insert objOpp;
+Opportunity objOpporInsertada = [SELECT Id, Name, AccountId FROM Opportunity WHERE Id =: objOpp.Id];
+System.debug('INSERT - Opp insertada con la cuenta relacionada: '+objOpporInsertada);
+System.debug('Id de la Cuenta Padre relacionada con la opp: '+objOpporInsertada.AccountId);
+System.debug('Id de la Opportunity hija relacionada con Account: '+objOpporInsertada.Id);
+}
+
 }
