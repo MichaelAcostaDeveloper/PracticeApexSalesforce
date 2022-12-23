@@ -28,4 +28,19 @@ public static void deleteAccount(String idAccount){
     delete objAccount;
 
 }
+
+public static void upsertObject (String idAccount, String nombAccount){
+    Account objAccount = new Account();
+    if(idAccount!=''){
+        objAccount.Id = idAccount;
+    }
+    objAccount.Name = nombAccount;
+    upsert objAccount;
+}
+
+public static void undeleteObjectExample(String nombreCuentaParaRecuperar){
+nombreCuentaParaRecuperar = '%'+nombreCuentaParaRecuperar+'%';
+Account[] cuentasParaRecuperar = [SELECT Id, Name FROM Account WHERE Name like :nombreCuentaParaRecuperar ALL ROWS];//ALL ROWS SIRVE PARA BUSCAR INCLUSIVE EN LA PAPELERA DE RECICLAJE
+undelete cuentasParaRecuperar;
+}
 }
