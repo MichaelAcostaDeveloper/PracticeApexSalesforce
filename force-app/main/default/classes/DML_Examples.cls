@@ -14,4 +14,18 @@ public static Id insertEmpleado(String nombEmpleado){
     insert objEmpleado;
     return objEmpleado.Id;
 }
+
+public static Account updateAccount(String newName, String newId) {
+    Account newAccount = new Account();
+    newAccount.Name = newName;
+    newAccount.Id = newId;
+    update newAccount;
+    return newAccount;
+}
+
+public static void deleteAccount(String idAccount){
+    Account objAccount = [SELECT Id FROM Account WHERE Id =: idAccount];
+    delete Account;
+    
+}
 }
